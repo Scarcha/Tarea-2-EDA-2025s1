@@ -102,7 +102,8 @@ void EDA_B(char A_char[], int i, int n) {
 
 // --- Implementación de EDA_A (Build-Max-Heap para Heapsort) ---
 void EDA_A(char A_char[], int n) {
-    for (int i = n / 2 - 1; i >= 0; i--) {
+    int i;
+    for (i = n / 2 - 1; i >= 0; i--) {
         EDA_B(A_char, i, n);
     }
 }
@@ -110,7 +111,8 @@ void EDA_A(char A_char[], int n) {
 // --- Implementación de EDA_FTW (Heapsort) ---
 void EDA_FTW(char A_char[], int n) {
     EDA_A(A_char, n);
-    for (int i = n - 1; i > 0; i--) {
+    int i;
+    for (i = n - 1; i > 0; i--) {
         // Mover la raíz actual (el más grande) al final del arreglo
         char temp = A_char[0];
         A_char[0] = A_char[i];
@@ -173,7 +175,8 @@ int main(int argc, char *argv[]) {
     // Muestra del contenido crudo
     printf("DEBUG: Primeros 100 caracteres del contenido crudo (o menos):\n");
     fflush(stdout);
-    for (int i = 0; i < (bytes_read > 100 ? 100 : (int)bytes_read); ++i) {
+    int i;
+    for (i = 0; i < (bytes_read > 100 ? 100 : (int)bytes_read); ++i) {
         if (raw_content[i] >= 32 && raw_content[i] <= 126) { 
             putchar(raw_content[i]);
         } else {
@@ -191,9 +194,9 @@ int main(int argc, char *argv[]) {
         free(raw_content);
         return EXIT_FAILURE;
     }
-
-    for (size_t i = 0; i < bytes_read; i++) {
-        unsigned char c = raw_content[i];
+    size_t k;
+    for (k = 0; k < bytes_read; k++) {
+        unsigned char c = raw_content[k];
         if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
             filtered_content_temp[alpha_count++] = (char)c;
         }
@@ -240,7 +243,7 @@ int main(int argc, char *argv[]) {
     // --- DEBUGGING: Mostrar entrada a Heapsort ---
     printf("DEBUG: data_heapsort ANTES de EDA_FTW (primeros 100 caracteres):\n");
     fflush(stdout);
-    for (int i = 0; i < (alpha_count > 100 ? 100 : alpha_count); ++i) {
+    for (i = 0; i < (alpha_count > 100 ? 100 : alpha_count); ++i) {
         putchar(data_heapsort[i]);
     }
     printf("\nDEBUG: (Fin de la muestra antes de Heapsort)\n\n");
